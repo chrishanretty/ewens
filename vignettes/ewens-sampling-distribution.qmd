@@ -37,3 +37,49 @@ $$
 p(m_1, ..., m_n; \theta) = \frac{n!}{\theta (\theta + 1) ... (\theta + n - 1)} \prod_{j=1}^n \frac{\theta^{m_j}}{j^{m_j} m_j! }
 $$ {#eq-ewens-pmf}
 
+The Ewens distribution is related to other constructions in
+statistics. For example: to *sample* from a Ewens distribution, and
+return a sample of size $n$ where each sample observation belongs to
+some category $k$, we follow the Chinese Restaurant Process
+[@aldous1983exchangeability, p. 92] for $n$ steps. We imagine $n$
+customers entering the restaurant and choosing to sit at one of an
+infinite number of infinitely large banquet tables. The first customer
+enters, and sits at a table. The second customer enters, and either
+
+ - sits at a new table with probability $\frac{\theta}{2 - 1 + \theta}$, or
+ - sits at the occupied table with probability $\frac{1}{2 - 1 + \theta}$
+
+The third customer enters, and either
+
+ - sits at a new table with probability $\frac{\theta}{3 - 1 + \theta}$, or 
+ - sits at one of the occupied tables with probability $\frac{c}{3 -
+   1 + \theta}$, where $c$ is the count of people at that table.
+
+In general, the $j$th customer
+
+ - sits at a new table with probability $\frac{\theta}{j - 1 + \theta}$, or 
+ - sits at an occupied table with probability $\frac{c}{j - 1 + \theta}$
+ 
+From the Ewens sampling formula, we can derive an expression for the
+probability of there being $k$ parts in the partition of $n$ -- or
+alternately, the probability distribution of the number of tables in
+our Chinese restaurant. This formula is sometimes referred to as the
+Chinese restaurant table *distribution* -- or at least so says
+[Wikipedia](https://en.wikipedia.org/wiki/Chinese_restaurant_process#Expected_number_of_tables). This
+probability mass function is given by
+
+$$
+Pr(K = k) = \lvert{} S^k_n \rvert{} \frac{\theta^k}{\theta (\theta + 1) ... (\theta + n - 1)}
+$$ {#eq-crt-pmf}
+
+where $\lvert{}S^k_n$\rvert{}$ is the absolute value of a Stirling
+number of the first kind. If we are solely interested in the expected
+number of tables, rather than the entire distribution, we can use the
+following expression:
+
+$$
+\newcommand{\Expect}{\operatorname{\mathbb{E}}}
+\Expect{[k]} = \theta \sum_{j=1}^{n} \frac{1}{\theta + j - 1}
+$$ {#eq-crt-expectation}
+
+
