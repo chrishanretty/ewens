@@ -14,3 +14,26 @@ knitr:
 #| label: setup
 library(ewens)
 ```
+
+
+The Ewens distribution is a distribution over partitions of
+integers. It has a single non-negative parameter $\theta$, which
+determines how many parts one can expect in the partition: as $\theta$
+goes to zero, the Ewens distribution returns a single part; as
+$\theta$ goes to infinity, the Ewens distribution returns $n$ parts
+each with a value of one.
+
+The Ewens distribution also gives the expected count of objects
+belonging to category $k$ when a sample of size $n$ is drawn from an
+infinitely large population. For this reason, the formula for the
+probability mass function of the Ewens distribution is also called the
+Ewens sampling formula [@ewens1972sampling]. 
+
+Suppose that we have $m_1$ categories which appear once in the sample,
+$m_2$ categories which appear twice in the sample, and so on. Then the
+probability of the vector $m$ is as follows:
+
+$$
+p(m_1, ..., m_n; \theta) = \frac{n!}{\theta (\theta + 1) ... (\theta + n - 1)} \prod_{j=1}^n \frac{\theta^{m_j}}{j^{m_j} m_j! }
+$$ {#eq-ewens-pmf}
+
