@@ -2,4 +2,6 @@
 
 export(dewens)
 export(dewens_k)
+export(ewens_mle)
 export(rewens)
+importFrom(stats,uniroot)
