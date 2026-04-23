@@ -15,6 +15,7 @@ knitr:
 library(ewens)
 ```
 
+# The Ewens distribution
 
 The Ewens distribution is a distribution over partitions of
 integers. It has a single non-negative parameter $\theta$, which
@@ -82,4 +83,50 @@ $$
 \Expect{[k]} = \theta \sum_{j=1}^{n} \frac{1}{\theta + j - 1}
 $$ {#eq-crt-expectation}
 
+Thus, if we know our sample size and the value of $\theta$, we can
+work out the expected number of classes. One might think that it
+wouldn't be possible to apply this logic in reverse, and arrive at an
+expression for $\theta$ in terms of the sample size and the observed
+number of classes. After all, the observed number of classes reports
+much less information than the full vector of frequencies $m_1, ...,
+m_n$. This seems plausible on the face of it, and yet it is wrong. As
+@tavare2021magical writes, discussing the Ewens sampling formula in
+its original context of population genetics:
 
+> "In statistical parlance, the number $K_n$ of different alleles
+> observed in the sample is sufficient for the parameter $\theta$. It
+> follows from the Rao–Blackwell theorem that estimation of \theta
+> should be based on $K_n$; earlier, estimation of \theta had been
+> based on the observed allele frequencies"
+
+The log-likelihood for $\theta$ given $K$ and $n$ is:
+
+$$
+K \log \theta - \sum_{i=0}^{n-1}\log (\theta + i) + constant
+$$
+
+If, for the purposes of maximum likelihood estimation, we
+differentiate this and set to zero, we get:
+
+$$
+\frac{\mathrm{d} \ell}{\mathrm{d} \theta} = \frac{K}{\theta} - \sum_{i=0}^{n-1}\frac{1}{\theta +i}
+$$ {#eq-mle}
+
+Useful readings on the Ewens distribution include @crane2016ubiquitous
+and @tavare2021magical; @ewens1972sampling is probably of historical
+interest only.
+
+# R implementation
+
+The `dewens` function gives the probability mass function in
+@eq-ewens-pmf. It accepts a vector with class memberships and
+tabulates the number of classes that appear once, twice, and so on.
+
+The `rewens` function samples from the Ewens distribution by following
+the Chinese Restaurant Process.
+
+The probability mass function given in @eq-crt-pmf is implemented in
+`dewens_k`; the expression for the mean K in @eq-crt-expectation in
+function `ewens_k_exact`.
+
+Finally, function `ewens_mle` takes an input vector and estimates $\theta$.
