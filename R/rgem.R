@@ -8,19 +8,14 @@
 #' @importFrom stats rbeta
 #' @export
 rgem <- function(alpha = 0, theta = 1, trunc_at = 500) {
-    if (alpha < 0 | alpha > 1) {
-        stop("Parameter alpha must be between zero and one")
-    }
-    if (theta < -alpha) {
-        stop("Parameter theta must be greater than -alpha")
-    }
-
-    s <- numeric(trunc_at)
-    remaining <- 1.0
-    for (k in 1:trunc_at) {
-        v_k <- stats::rbeta(1, 1 - alpha, theta + k * alpha)
-        s[k] <- remaining * v_k
-        remaining <- remaining * (1 - v_k)
-    }
-    return(s)
+  if (alpha < 0 || alpha > 1) stop("alpha must be in [0,1]")
+  if (theta < -alpha) stop("theta must be >= -alpha")
+  
+  k <- seq_len(trunc_at)
+  v <- stats::rbeta(trunc_at, 1 - alpha, theta + k * alpha)
+  
+  remaining <- cumprod(c(1, 1 - v[-trunc_at]))
+  s <- remaining * v
+  
+  s
 }
