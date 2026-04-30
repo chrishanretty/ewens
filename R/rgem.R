@@ -18,7 +18,7 @@ rgem <- function(alpha = 0, theta = 1, trunc_at = 500) {
     s <- numeric(trunc_at)
     remaining <- 1.0
     for (k in 1:trunc_at) {
-        v_k <- stats::rbeta(1, 1 - alpha, theta + (k - 1) * alpha)
+        v_k <- stats::rbeta(1, 1 - alpha, theta + k * alpha)
         s[k] <- remaining * v_k
         remaining <- remaining * (1 - v_k)
     }
