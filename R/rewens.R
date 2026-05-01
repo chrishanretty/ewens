@@ -35,3 +35,6 @@ rewens <- function(n, theta = 1) {
     }
     assignment
 }
+rewens_fast <- function(n, theta = 1) {
+    .Call("rewens_c", as.integer(n), as.numeric(theta), PACKAGE = "ewens")
+}
