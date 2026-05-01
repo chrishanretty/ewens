@@ -4,8 +4,11 @@
 
 extern SEXP rewens_c(SEXP, SEXP);
 
+extern SEXP gcrp_c(SEXP, SEXP, SEXP);
+
 static const R_CallMethodDef CallEntries[] = {
     {"rewens_c", (DL_FUNC) &rewens_c, 2},
+    {"gcrp_c",   (DL_FUNC) &gcrp_c,   3},
     {NULL, NULL, 0}
 };
 

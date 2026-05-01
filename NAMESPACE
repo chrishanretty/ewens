@@ -3,6 +3,7 @@
 export(dewens)
 export(dewens_k)
 export(ewens_mle)
+export(gcrp)
 export(rewens)
 export(rgem)
 importFrom(stats,rbeta)
