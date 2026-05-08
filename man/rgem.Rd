@@ -19,3 +19,6 @@ A vector of shares of length \code{trunc_at} which may sum to less than one
 \description{
 Draw from the Griffiths-Engen-McCloskey distribution
 }
+\details{
+The Griffiths-Engen-McCloskey distribution is the infinite dimensional counterpart to the Ewens sampling distribution. This function does not return an infinite dimensional vector(!), but returns a vector of shares creating by a "stick-breaking" construction. The vector of shares is returned after \code{trunc_at} sticks are broken; this can mean that there is still a non-negligible residual amount.
+}

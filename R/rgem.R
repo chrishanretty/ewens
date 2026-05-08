@@ -1,5 +1,8 @@
 #' Draw from the Griffiths-Engen-McCloskey distribution
 #'
+#' @details
+#' The Griffiths-Engen-McCloskey distribution is the infinite dimensional counterpart to the Ewens sampling distribution. This function does not return an infinite dimensional vector(!), but returns a vector of shares creating by a "stick-breaking" construction. The vector of shares is returned after `trunc_at` sticks are broken; this can mean that there is still a non-negligible residual amount. 
+#' 
 #' @param alpha A parameter between zero and one
 #' @param theta A parameter which must be greater than -alpha
 #' @param trunc_at An integer which specifies the maximum number of components to return
