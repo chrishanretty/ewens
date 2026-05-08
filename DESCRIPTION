@@ -1,5 +1,5 @@
 Package: ewens
-Title: Functions for the Ewens distribution
+Title: Functions for the Ewens Distribution
 Version: 0.1.0
 Authors@R: 
     person("Chris", "Hanretty", , "chris.hanretty@gmail.com", role = c("aut", "cre"),
