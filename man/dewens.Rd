@@ -11,10 +11,13 @@ dewens(x, theta = 1, log = FALSE)
 
 \item{theta}{A non-negative parameter governing the expected sample diversity.}
 
-\item{log}{if TRUE, probabilities are given as log(p)}
+\item{log}{if TRUE, probabilities are given as log(p). Default is FALSE.}
 }
 \description{
-Probability mass function for the Ewens distribution
+Gives the probability mass function for the Ewens distribution, as described in Ewens, Warren (1972). "The sampling theory of selectively neutral alleles". \emph{Theoretical Population Biology}. 3: 87–112. doi:10.1016/0040-5809(72)90035-4.
+}
+\details{
+The probability of a vector of counts \eqn{m_1, ..., m_n} is given by the expression \deqn{\frac{n!}{\theta (\theta + 1) ... (\theta + n - 1)}\prod_{j=1}^n \frac{\theta^{m_j}}{j^{m_j} m_j!}}
 }
 \examples{
 x <- sample(LETTERS, 120, replace = TRUE)

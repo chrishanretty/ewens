@@ -4,7 +4,7 @@
 #' Gives the probability mass function for the Ewens distribution, as described in Ewens, Warren (1972). "The sampling theory of selectively neutral alleles". *Theoretical Population Biology*. 3: 87–112. doi:10.1016/0040-5809(72)90035-4.
 #'
 #' @details
-#' The probability of a vector of counts \eqn{m_1, ..., m_n} is given by the expression \deqn{\frac{n!}{\theta (\theta + 1) ... (\theta + n - 1)}\prod_{j=1}^n \frac{\theta^{m_j}}{j^{m_j} m_j!}
+#' The probability of a vector of counts \eqn{m_1, ..., m_n} is given by the expression \deqn{\frac{n!}{\theta (\theta + 1) ... (\theta + n - 1)}\prod_{j=1}^n \frac{\theta^{m_j}}{j^{m_j} m_j!}}
 #' 
 #' @param x A vector giving class memberships of each observation in the sample
 #' @param theta A non-negative parameter governing the expected sample diversity.
