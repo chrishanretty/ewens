@@ -1,4 +1,12 @@
 #' Draw from the Ewens distribution
+#'
+#' Returns a vector with class membership
+#'
+#' @details
+#' Although this command is described as sampling from the Ewens distribution, it is easier to think of it as a particular instantiation of the Chinese Restaurant Process, run for n "customers". The $j$th customer
+#'  - sits at a new table with probability \eqn{\frac{\theta}{j - 1 + \theta}}, or
+#'  - sits at an occupied table with probability \eqn{\frac{c}{j - 1 + \theta}}
+#' where $c$ is the number of customers already at each table.
 #' 
 #' @param n The sample size.
 #' @param theta A non-negative parameter governing the expected sample diversity.
@@ -6,35 +14,8 @@
 #' @examples
 #' rewens(100, 1)
 #' rewens(120, 0.5)
-#' rewens(10, 0)
+#' rewens(10, 0) ## equal to rep(1, 10)
 #' @export
 rewens <- function(n, theta = 1) {
-    if (theta < 0) {
-        stop("Parameter theta must be non-negative. ")
-    }
-    if (theta == 0) {
-        return(rep(1, n))
-    }
-    
-    ## Pre-allocate
-    assignment <- integer(n)
-    table_sizes <- integer(n) ## over-allocate
-    n_tables <- 0L
-    
-    for (i in seq_len(n)) {
-        probs <- c(table_sizes[seq_len(n_tables)], theta) / (theta + i - 1)
-        choice <- sample(n_tables + 1L, 1, prob = probs)
-        
-        if (choice > n_tables) {
-            n_tables <- n_tables + 1L
-            table_sizes[n_tables] <- 1L
-        } else {
-            table_sizes[choice] <- table_sizes[choice] + 1L
-        }
-        assignment[i] <- choice
-    }
-    assignment
-}
-rewens_fast <- function(n, theta = 1) {
     .Call("rewens_c", as.integer(n), as.numeric(theta), PACKAGE = "ewens")
 }
