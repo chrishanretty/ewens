@@ -9,6 +9,9 @@ ewens_mle(x)
 \arguments{
 \item{x}{A vector containing class memberships; sample size n and number of classes k are calculated from this}
 }
+\value{
+A scalar giving the estimate of theta
+}
 \description{
 Maximum likelihood estimate of theta given sample vector with class memberships
 }

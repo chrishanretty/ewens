@@ -13,6 +13,9 @@ dewens(x, theta = 1, log = FALSE)
 
 \item{log}{if TRUE, probabilities are given as log(p). Default is FALSE.}
 }
+\value{
+A numeric vector giving a probability (or if \code{log = TRUE}, a log probability)
+}
 \description{
 Gives the probability mass function for the Ewens distribution, as described in Ewens, Warren (1972). "The sampling theory of selectively neutral alleles". \emph{Theoretical Population Biology}. 3: 87–112. doi:10.1016/0040-5809(72)90035-4.
 }

@@ -13,6 +13,9 @@ dewens_k(k, n, theta)
 
 \item{theta}{A non-negative parameter governing the expected sample diversity.}
 }
+\value{
+The probability of observing k classes
+}
 \description{
 Probability mass function for the number of classes from a Ewens distribution
 }
@@ -21,6 +24,6 @@ The number of classes from a Ewens distribution with parameter \eqn{\theta} is g
 }
 \examples{
 x <- sample(LETTERS, 120, replace = TRUE)
-dewens_k(1, 20, theta = 1)
+dewens_k(1, 20, theta = 1) ## Pretty unlikely we just see one class
 
 }
