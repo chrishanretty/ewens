@@ -3,6 +3,7 @@
 #' @param x A vector containing class memberships; sample size n and number of classes k are calculated from this
 #' 
 #' @importFrom stats uniroot
+#' @returns A scalar giving the estimate of theta
 #' @export
 ewens_mle <- function(x) {
     n <- length(x)

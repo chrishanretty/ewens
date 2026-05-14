@@ -6,10 +6,10 @@
 #' @param k An integer number of classes at which to evaluate the PMF
 #' @param n A sample size not less than k
 #' @param theta A non-negative parameter governing the expected sample diversity.
-#' 
+#' @returns The probability of observing k classes
 #' @examples
 #' x <- sample(LETTERS, 120, replace = TRUE)
-#' dewens_k(1, 20, theta = 1)
+#' dewens_k(1, 20, theta = 1) ## Pretty unlikely we just see one class
 #'
 #' @export
 dewens_k <- function(k, n, theta) {

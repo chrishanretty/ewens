@@ -9,6 +9,7 @@
 #' @param x A vector giving class memberships of each observation in the sample
 #' @param theta A non-negative parameter governing the expected sample diversity.
 #' @param log if TRUE, probabilities are given as log(p). Default is FALSE.
+#' @returns A numeric vector giving a probability (or if `log = TRUE`, a log probability)
 #' @examples
 #' x <- sample(LETTERS, 120, replace = TRUE)
 #' dewens(x, theta = 1)
